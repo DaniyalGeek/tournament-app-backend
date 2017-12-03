@@ -1,0 +1,13 @@
+{
+	
+	"framework":	"expressjs",
+	"controller": 	"user",
+	"url":			"assignment/rad/user",
+	"db": 			"mysql",
+	"model": 		"users",
+	"att":		{
+					"name":		"string",
+					"password": 	"string",
+					"age":		"number"
+				}
+}

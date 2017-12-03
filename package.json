@@ -1,0 +1,18 @@
+{
+  "name": "ExpressSite",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "http": "0.0.0",
+    "jade": "^1.9.2",
+    "path": "^0.11.14",
+    "request": "^2.72.0",
+    "sails-mysql": "^0.10.11",
+    "waterline": "^0.10.21"
+  }
+}
