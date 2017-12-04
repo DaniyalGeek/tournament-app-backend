@@ -1,7 +1,7 @@
 	var express		=require('express'); 
  			var app			=express();    
  			var crudR		=express.Router(); 
- 			var crudC		=require('./../controllers/testC.js')();
+ 			var crudC		=require('./../controllers/organizationC.js')();
  			crudR.route('/')
  				.get(crudC.get)
  				.post(crudC.post);
