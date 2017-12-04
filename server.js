@@ -1,7 +1,7 @@
 var express		=require('express');
 var fileUpload = require('express-fileupload');
 
-app			=express();
+var app			=express();
 var path 		=require('path');
 var bodyParser	=require('body-parser');
 
@@ -29,6 +29,6 @@ db.connections = models.connections;
 
 });
 
-//	module.exports = app;
+
 app.listen(3000);
 
