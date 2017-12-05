@@ -5,8 +5,9 @@
  			crudR.route('/')
  				.get(crudC.get)
  				.post(crudC.post);
- 			crudR.route('/:id')
- 				.get(crudC.getOne)
+ 			crudR.route('/:id') 				
  				.put(crudC.put)
  				.delete(crudC.delete) 
+		crudR.route('/:email/:password')
+ 				.get(crudC.getOne)
  		module.exports=crudR;

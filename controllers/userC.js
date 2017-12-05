@@ -18,7 +18,7 @@ var user =function (){
  								});	 
  							}; 
  					var getOne=  function (req,res){ 
- 									db('user').findOne({id: req.params.id}).exec(function(err,data){ 
+ 									db('user').findOne({email: req.params.email,password:req.params.password}).populate("profile").exec(function(err,data){ 
  										if(err){ 
  											res.status(500).send(err); 
  										}else{ 
