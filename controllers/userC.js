@@ -22,7 +22,10 @@ var user =function (){
  										if(err){ 
  											res.status(500).send(err); 
  										}else{ 
- 											res.json(data);  
+ 											if(data)
+ 												res.json(data);  
+ 											else
+ 												res.json({success:false,message:"User not exist"})
  										}  
  									});  
  								};  
