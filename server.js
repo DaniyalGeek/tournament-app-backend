@@ -4,7 +4,11 @@ var fileUpload = require('express-fileupload');
 var app			=express();
 var path 		=require('path');
 var bodyParser	=require('body-parser');
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // default options
 app.use(fileUpload());
@@ -12,6 +16,7 @@ app.use(fileUpload());
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use('/api',require('./routers/testR.js'));
 app.use('/organization',require('./routers/organizationR.js'));
