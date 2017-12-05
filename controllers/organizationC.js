@@ -17,13 +17,33 @@ var organization =function (){
               // Use the mv() method to place the file somewhere on your server
               rcvdImage.mv("public/"+destPath, function(err) {
                 req.body.org_logo = destPath
-                  		db('organization').create(req.body).exec(function(err,data){ 
-                        if(err){ 
-                          res.status(500).send(err); 
-                        }else{ 
-                          res.status(201).json(data); 
-                        } 
-                      });	
+                  db('organization').findOne({org_email: req.body.org_email}).exec(function(err,data){ 
+                    if(err){ 
+                      res.status(500).send(err); 
+                    }else{ 
+                      if(data){
+                        res.json({success:false,message:"email already exist"})
+                      }
+                      else{
+
+                                db('organization').create(req.body).exec(function(err,data){ 
+                                  if(err){ 
+                                    res.status(500).send(err); 
+                                  }else{ 
+                  
+                                        db('user').create({email:req.body.org_email,password:req.body.password,profile:data.id}).exec(function(err){ 
+                                          if(err){ 
+                                            res.status(500).send(err); 
+                                          }
+                                        });  
+                                    res.status(201).json(data); 
+                                  } 
+                                });
+
+                      }
+                      
+                    }  
+                  }); 
                
               })
 

@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api',require('./routers/testR.js'));
 app.use('/organization',require('./routers/organizationR.js'));
+app.use('/user',require('./routers/userR.js'));
 //ORM Configurations
 var waterlineConfig = require('./waterline/config')
 , waterlineOrm = require('./waterline/init').waterlineOrm;
