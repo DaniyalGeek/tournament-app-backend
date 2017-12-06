@@ -9,10 +9,11 @@ var user =function (){
  								}); 
  							}; 
  					var post=function (req,res){ 
- 								db('user').create(req.body).exec(function(err){ 
+ 								db('user').create(req.body).exec(function(err,data){ 
  									if(err){ 
  										res.status(500).send(err); 
  									}else{ 
+ 									
  										res.status(201).send('user has been created'); 
  									} 
  								});	 

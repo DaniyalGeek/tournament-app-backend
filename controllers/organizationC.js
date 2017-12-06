@@ -38,10 +38,11 @@ var organization =function (){
                                     res.status(500).send(err); 
                                   }else{ 
                                         
-                                        db('user').create({image:c_destPath ,contact_phone:req.body.c_phone,name:req.body.c_name,email:req.body.c_email,password:req.body.password,profile:data.id}).exec(function(err){ 
+                                        db('user').create({image:c_destPath ,contact_phone:req.body.c_phone,name:req.body.c_name,email:req.body.c_email,password:req.body.password,profile:data.id,role:req.body.role}).exec(function(err,data){ 
                                           if(err){ 
                                             res.status(500).send(err); 
                                           }
+                                           acl.addUserRoles( data.id , req.body.role );
                                         });  
                                     res.status(201).json(data); 
                                   } 
