@@ -5,13 +5,15 @@ module.exports = {
  						migrate:'alter',
  						attributes: {
 			 					"org_name":"string",
-			 					"org_address":"string",
+			 					"org_street":"string",
+			 					"org_state":"string",
+			 					"org_zip":"string",
+			 					"org_country":"string",
 			 					"org_phone":"string",
-			 					"org_email":{type:"string",unique:true},
-			 					"org_contact_name":"string",
-			 					"org_contact_phone":"string",
-			 					"org_contact_email":"string",
-			 					"org_logo":"string"
+			 					"org_logo":"string",
+			 					"admin": {
+			 							model:'user'
+			 						}
                         }   
  					};
 

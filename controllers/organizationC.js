@@ -1,6 +1,6 @@
 var organization =function (){ 
  					var get=function (req,res){ 
- 								db('organization').find(function (err, data){  
+ 								db('organization').find().populate("admin").exec(function (err, data){  
  									if(err){  
  										res.status(500).send(err); 
  									}else{  
@@ -14,6 +14,13 @@ var organization =function (){
               let fileName = Math.random().toString(36).slice(2);
               let destPath = "uploads/images/"+fileName+".jpg";
 
+             let rcvd_c_Image = req.files.c_pic;
+            let file_c_Name = Math.random().toString(36).slice(2);
+            let c_destPath = "uploads/images/"+file_c_Name+".jpg";
+            rcvd_c_Image.mv("public/"+destPath, function(err) {
+                console.log("user image upload")
+
+            })
               // Use the mv() method to place the file somewhere on your server
               rcvdImage.mv("public/"+destPath, function(err) {
                 req.body.org_logo = destPath
@@ -30,8 +37,8 @@ var organization =function (){
                                   if(err){ 
                                     res.status(500).send(err); 
                                   }else{ 
-                  
-                                        db('user').create({email:req.body.org_email,password:req.body.password,profile:data.id}).exec(function(err){ 
+                                        
+                                        db('user').create({image:c_destPath ,contact_phone:req.body.c_phone,name:req.body.c_name,email:req.body.c_email,password:req.body.c_password,profile:data.id}).exec(function(err){ 
                                           if(err){ 
                                             res.status(500).send(err); 
                                           }
