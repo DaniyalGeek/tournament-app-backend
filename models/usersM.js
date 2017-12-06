@@ -11,8 +11,9 @@
  						"name":"string",
  						"contact_phone":"string",
  						"image":"string",
- 						"profile": {
- 							model:'organization'
- 						}
+ 						  organization: {
+					      collection:'organization',
+					      via: 'admin'
+					    }
  					}
  				}

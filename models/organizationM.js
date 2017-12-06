@@ -11,9 +11,10 @@ module.exports = {
 			 					"org_country":"string",
 			 					"org_phone":"string",
 			 					"org_logo":"string",
-			 					"admin": {
-			 							model:'user'
-			 						}
+			 					 admin:{
+						           collection:'user',
+						           via:'organization'
+						        }
                         }   
  					};
 

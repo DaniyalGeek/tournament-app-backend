@@ -24,7 +24,7 @@ var organization =function (){
               // Use the mv() method to place the file somewhere on your server
               rcvdImage.mv("public/"+destPath, function(err) {
                 req.body.org_logo = destPath
-                  db('organization').findOne({org_email: req.body.org_email}).exec(function(err,data){ 
+                  db('user').findOne({email: req.body.c_email}).exec(function(err,data){ 
                     if(err){ 
                       res.status(500).send(err); 
                     }else{ 
