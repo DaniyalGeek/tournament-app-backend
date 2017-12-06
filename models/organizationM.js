@@ -9,6 +9,7 @@ module.exports = {
 			 					"org_state":"string",
 			 					"org_zip":"string",
 			 					"org_country":"string",
+			 					"org_city":"string",
 			 					"org_phone":"string",
 			 					"org_logo":"string",
 			 					 admin:{
