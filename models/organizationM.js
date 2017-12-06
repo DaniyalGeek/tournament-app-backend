@@ -13,7 +13,7 @@ module.exports = {
 			 					"org_logo":"string",
 			 					 admin:{
 						           collection:'user',
-						           via:'organization'
+						           via:'profile'
 						        }
                         }   
  					};

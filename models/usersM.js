@@ -11,7 +11,7 @@
  						"name":"string",
  						"contact_phone":"string",
  						"image":"string",
- 						  organization: {
+ 						  profile: {
 					      collection:'organization',
 					      via: 'admin'
 					    }
