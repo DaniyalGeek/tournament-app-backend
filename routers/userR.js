@@ -8,6 +8,5 @@
  			crudR.route('/:id') 				
  				.put(crudC.put)
  				.delete(crudC.delete) 
-		crudR.route('/login')
- 				.post(crudC.getOne)
+		
  		module.exports=crudR;

@@ -51,18 +51,18 @@ function set_roles() {
     // Define roles, resources and permissions
     acl.allow([
         {
-            roles: 'admin',
+            roles: '0',    //super -admin
             allows: [
                 { resources: '/secret', permissions: '*' }
             ]
         }, {
-            roles: 'user',
+            roles: '1',   //organization-admin
             allows: [
-                { resources: '/secret', permissions: 'get' }
-                // { resources: '/user', permissions: 'get' }
+                { resources: '/secret', permissions: 'get' },
+                 { resources: '/user', permissions: 'get' }
             ]
         }, {
-            roles: 'organization',
+            roles: '2',  //partipent
             allows: [
             {resources:'/secret' , permissions:'get'}
             ]
@@ -103,7 +103,7 @@ function get_user_id( request, response ) {
 }
 
 app.use('/organization',require('./routers/organizationR.js'));
-
+app.use('/login',require('./routers/loginR.js'));
 
 app.post('/authenticate', function(req, res) {
 		  // find the user
