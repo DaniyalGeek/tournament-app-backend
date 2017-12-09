@@ -105,42 +105,42 @@ function get_user_id( request, response ) {
 app.use('/organization',require('./routers/organizationR.js'));
 app.use('/login',require('./routers/loginR.js'));
 
-app.post('/authenticate', function(req, res) {
-		  // find the user
-		console.log(req.body)
-		 db('user').findOne({
-		    email: req.body.email
-		  }, function(err, user) {
-		  	console.log(user)
-		    if (err) throw err;
+// app.post('/authenticate', function(req, res) {
+// 		  // find the user
+// 		console.log(req.body)
+// 		 db('user').findOne({
+// 		    email: req.body.email
+// 		  }, function(err, user) {
+// 		  	console.log(user)
+// 		    if (err) throw err;
 
-		    if (!user) {
-		      res.json({ success: false, message: 'Authentication failed. User not found.' });
-		    } else if (user) {
+// 		    if (!user) {
+// 		      res.json({ success: false, message: 'Authentication failed. User not found.' });
+// 		    } else if (user) {
 
-		      // check if password matches
-		      if (user.password != req.body.password) {
-		        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-		      } else {
+// 		      // check if password matches
+// 		      if (user.password != req.body.password) {
+// 		        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+// 		      } else {
 
-		        // if user is found and password is right
-		        // create a token
-		        var token = jwt.sign({email:user.email,password:user.password}, app.get('superSecret'), {
+// 		        // if user is found and password is right
+// 		        // create a token
+// 		        var token = jwt.sign({email:user.email,password:user.password}, app.get('superSecret'), {
 		         
-		        });
+// 		        });
 
-		        // return the information including token as JSON
-		        res.json({
-		          success: true,
-		          message: 'Enjoy your token!',
-		          token: token
-		        });
-		      }   
+// 		        // return the information including token as JSON
+// 		        res.json({
+// 		          success: true,
+// 		          message: 'Enjoy your token!',
+// 		          token: token
+// 		        });
+// 		      }   
 
-		    }
+// 		    }
 
-		  });
-		});
+// 		  });
+// 		});
 
 		// app.use(function(req, res, next) {
 

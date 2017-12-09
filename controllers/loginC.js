@@ -1,3 +1,5 @@
+var jwt = require('jsonwebtoken');
+
 var user =function (){ 
 
  
@@ -15,11 +17,14 @@ var user =function (){
 											      if (user.password != req.body.password) {
 											        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
 											      } else {
-
+														   var token = jwt.sign({email:user.email,password:user.password}, 'superSecret', {
+																         
+																        });
 											        // return the information including token as JSON
 											        res.json({
 											          success: true,
-											        	data:user				
+											        	data:user,
+											        	token:token			
 											        });
 											      }   
 

@@ -38,7 +38,7 @@ var organization =function (){
                                     res.status(500).send(err); 
                                   }else{ 
                                         
-                                        db('user').create({image:c_destPath ,contact_phone:req.body.c_phone,name:req.body.c_name,email:req.body.c_email,password:req.body.password,profile:data.id,role:req.body.role}).exec(function(err,data){ 
+                                        db('user').create({image:c_destPath ,contact_phone:req.body.c_phone,name:req.body.c_name,email:req.body.c_email,password:req.body.password,profile:data.id,role:'1'}).exec(function(err,data){ 
                                           if(err){ 
                                             res.status(500).send(err); 
                                           }
