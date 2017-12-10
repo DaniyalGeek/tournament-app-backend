@@ -31,7 +31,15 @@ var user =function (){
  									});  
  								};  
  					var put=function (req,res){  
- 								db('user').update({id:req.params.id},req.body).exec(function (err, data){  
+ 						if(req.files){
+
+ 							let rcvd_c_Image = req.files.c_pic;
+				            let file_c_Name = Math.random().toString(36).slice(2);
+				            let c_destPath = "uploads/images/"+file_c_Name+".jpg";
+				            rcvd_c_Image.mv("public/"+c_destPath, function(err) {
+				            	 console.log("user image upload")
+				                req.body.image = c_destPath
+				                  db('user').update({id:req.params.id},req.body).exec(function (err, data){  
  									if(err){  
  										res.status(500).send(err);  
  									}else{  
@@ -43,7 +51,30 @@ var user =function (){
  											}  
  										});  
  									}  
- 								});  
+ 								});
+				            })
+
+ 						}else{
+ 							  db('user').update({id:req.params.id},req.body).exec(function (err, data){  
+ 									if(err){  
+ 										res.status(500).send(err);  
+ 									}else{  
+ 										db('user').findOne({id:req.params.id}).exec(function(err,data){  
+ 											if(err){  
+ 												res.status(500).send(err);  
+ 											}else{  
+ 												res.json(data)  
+ 											}  
+ 										});  
+ 									}  
+ 								});
+ 						}
+				 	
+				              
+				              
+
+				         
+ 								  
  							};  
  					var del=function (req,res){  
  									db('user').destroy({id:req.params.id}).exec(function (err){  

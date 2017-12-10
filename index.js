@@ -15,12 +15,13 @@ app.use(function(req, res, next) {
 // default options
 app.use(fileUpload());
 //App Configurations
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('superSecret', "superSecret"); // secret variable
 
-
+ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
