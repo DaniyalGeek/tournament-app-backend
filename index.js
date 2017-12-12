@@ -9,6 +9,7 @@ var mongoose= require('mongoose');
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
   next();
 });
 
@@ -44,7 +45,6 @@ mongoose.connect( 'mongodb://127.0.0.1:27017/tournament' );
     set_roles();
     set_routes();
 
-
 // This creates a set of roles which have permissions on
 //  different resources.
 function set_roles() {
@@ -60,7 +60,7 @@ function set_roles() {
             roles: '1',   //organization-admin
             allows: [
                 { resources: '/secret', permissions: 'get' },
-                 { resources: '/user', permissions: 'get' }
+                 { resources: '/user', permissions: '*' }
             ]
         }, {
             roles: '2',  //partipent

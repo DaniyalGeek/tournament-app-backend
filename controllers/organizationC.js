@@ -1,14 +1,14 @@
 var organization =function (){ 
- 					var get=function (req,res){ 
- 								db('organization').find().populate("admin").exec(function (err, data){  
- 									if(err){  
- 										res.status(500).send(err); 
- 									}else{  
- 										res.json(data); 
- 									} 
- 								}); 
- 							}; 
- 					var post=function (req,res){ 
+          var get=function (req,res){ 
+                db('organization').find().populate("admin").exec(function (err, data){  
+                  if(err){  
+                    res.status(500).send(err); 
+                  }else{  
+                    res.json(data); 
+                  } 
+                }); 
+              }; 
+          var post=function (req,res){ 
            console.log(req.files);
              let rcvdImage = req.files.org_logo;
               let fileName = Math.random().toString(36).slice(2);
@@ -55,18 +55,18 @@ var organization =function (){
                
               })
 
- 						 
- 							}; 
- 					var getOne=  function (req,res){ 
- 									db('organization').findOne({id: req.params.id}).exec(function(err,data){ 
- 										if(err){ 
- 											res.status(500).send(err); 
- 										}else{ 
- 											res.json(data);  
- 										}  
- 									});  
- 								};  
- 					var put=function (req,res){ 
+             
+              }; 
+          var getOne=  function (req,res){ 
+                  db('organization').findOne({id: req.params.id}).populate("admin").exec(function(err,data){ 
+                    if(err){ 
+                      res.status(500).send(err); 
+                    }else{ 
+                      res.json(data);  
+                    }  
+                  });  
+                };  
+          var put=function (req,res){ 
          if(req.files){
 
              let rcvdImage = req.files.org_logo;
@@ -107,24 +107,23 @@ var organization =function (){
                   }  
                 }); 
             }
- 							
- 							};  
- 					var del=function (req,res){  
- 									db('organization').destroy({id:req.params.id}).exec(function (err){  
- 										if(err){  
- 											res.status(500).send(err);  
- 										}else{  
- 											res.send('User with id: '+req.params.id+' has been deleted');  
- 										}  
- 									});  
- 								};  
- 					return {  
- 						get: 	get,  
- 						post: 	post,  
- 						getOne: getOne,  
- 						put: 	put,  
- 						delete: del  
- 					}  
- 				}  
- 				module.exports=organization;  
- 			
+              
+              };  
+          var del=function (req,res){  
+                  db('organization').destroy({id:req.params.id}).exec(function (err){  
+                    if(err){  
+                      res.status(500).send(err);  
+                    }else{  
+                      res.send('User with id: '+req.params.id+' has been deleted');  
+                    }  
+                  });  
+                };  
+          return {  
+            get:  get,  
+            post:   post,  
+            getOne: getOne,  
+            put:  put,  
+            delete: del  
+          }  
+        }  
+        module.exports=organization;  
