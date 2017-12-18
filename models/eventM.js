@@ -5,7 +5,8 @@
  						migrate:'alter',
  						attributes: {
 			 					"title":"string",
-			 					"date":"string",
+			 					"startDate":"string",
+			 					"endDate":"string",
 			 					"location":"string",
 			 					"image":"string",
 			 					"description":"string",
