@@ -91,6 +91,7 @@ function set_routes() {
         }
     );
 	app.use('/user',require('./routers/userR.js'));
+    app.use('/event',require('./routers/eventR.js'));
     //accept error
     app.use(acl.middleware.errorHandler('json')); 
     
