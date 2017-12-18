@@ -1,3 +1,5 @@
+
+
 module.exports = { 
  						identity:'organization', 
  						connection: 'mysqlDB',   
@@ -16,7 +18,10 @@ module.exports = {
 			 					 admin:{
 						           collection:'user',
 						           via:'profile'
-						        }
+						        },
+								 events: {
+									      collection:'event',
+									      via: 'organization'
+							    	}
                         }   
  					};
-
