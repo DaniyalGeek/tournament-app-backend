@@ -12,6 +12,7 @@ module.exports = {
 			 					"org_city":"string",
 			 					"org_phone":"string",
 			 					"org_logo":"string",
+			 					"org_cover":"string",
 			 					 admin:{
 						           collection:'user',
 						           via:'profile'

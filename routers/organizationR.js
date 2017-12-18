@@ -8,5 +8,8 @@
  			crudR.route('/:id')
  				.get(crudC.getOne)
  				.put(crudC.put)
- 				.delete(crudC.delete) 
+ 				.delete(crudC.delete);
+      crudR.route('/main/:id')
+ 				.put(crudC.putmain)
+  
  		module.exports=crudR;

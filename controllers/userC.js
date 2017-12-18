@@ -55,6 +55,7 @@ var user =function (){
 				            })
 
  						}else{
+							   delete req.body.c_pic ;
  							  db('user').update({id:req.params.id},req.body).exec(function (err, data){  
  									if(err){  
  										res.status(500).send(err);  
