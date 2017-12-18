@@ -101,7 +101,7 @@ var organization =function (){
               let destPathCover = "uploads/images/"+fileNameCover+".jpg";
               // Use the mv() method to place the file somewhere on your server
               rcvdCover.mv("public/"+destPathCover, function(err) {
-                req.body.org_logo = destPathCover
+                req.body.org_cover = destPathCover
 
                   db('organization').update({id:req.params.id},req.body).exec(function (err, data){  
                   if(err){  
